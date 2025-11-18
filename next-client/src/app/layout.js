@@ -3,7 +3,7 @@
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import AuthProvider from "@/context/AuthProvider";
-
+import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "react-hot-toast";
 import IssueContextProvider from "@/context/IssueContext";
 import { SocketProvider } from "@/context/SocketProvider";
@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
             <Providers>
               <IssueContextProvider>
                 {children}
+                <Analytics />
               </IssueContextProvider>
             </Providers>
           </SocketProvider>
