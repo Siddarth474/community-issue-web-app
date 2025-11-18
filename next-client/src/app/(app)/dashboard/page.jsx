@@ -128,8 +128,8 @@ const DashBoard = () => {
   }, [socket]);
 
   return (
-    <div className='w-full relative h-[89vh] md:h-screen bg-gray-200 dark:bg-black dark:text-gray-700 overflow-auto'>
-        <Header />
+    <div className='w-full flex flex-col relative h-[89vh] md:h-screen bg-gray-200 dark:bg-black dark:text-gray-700 overflow-auto'>
+        <div className='shrink-0'><Header /></div>
         {showPopUp && <IssueForm setShowPopUp={setShowPopUp} />}
         <div className='w-full h-full flex justify-center'>
             <div className='w-full md:w-[90%] my-5 px-3 py-3'>
@@ -169,7 +169,9 @@ const DashBoard = () => {
               
             </div>
         </div>
-        <Footer />
+        <div className='shrink-0'>
+          <Footer />
+        </div>
     </div>
   )
 }

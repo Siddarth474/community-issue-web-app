@@ -115,7 +115,7 @@ export default function MapViewClient({ onLocationSelect, issues = [] }) {
   return (
     <div className="w-full h-full">
       <MapContainer
-      className="h-[90%] md:h-full w-full rounded-xl shadow-lg"
+      className="h-full w-full shadow-lg"
         center={center}
         maxBounds={bounds}
         zoom={15}

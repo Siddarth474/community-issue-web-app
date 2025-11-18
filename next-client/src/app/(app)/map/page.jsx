@@ -58,10 +58,10 @@ const page = () => {
   }, [socket]);
   
   return (
-    <div className='w-full relative h-[calc(100vh-70px)] bg-gray-200 dark:bg-zinc-950'>
-        <Header />
-        <div className="p-2 relative h-full w-full sm:px-5 sm:py-3 my-3">
-          {!mapLoading && (<div className='relative h-full w-full'>
+    <div className='w-full flex flex-col relative h-screen bg-gray-200 dark:bg-zinc-950'>
+        <div className='shrink-0'><Header /></div>
+        <div className="relative flex-1 overflow-hidden ">
+          {!mapLoading && (<>
             <MapView 
             onLocationSelect={(lat, lng) => {
               setIssueDetails(prev => ({
@@ -81,18 +81,20 @@ const page = () => {
             bottom-[calc(6rem+env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[9990] cursor-pointer'>
                Report 
             </button>
-          </div>)}
+          </>)}
         </div>
 
         {mapLoading && (
-          <div className='flex items-center gap-2 justify-center w-full'>
+          <div className='flex items-center gap-2 justify-center w-full h-full'>
             <Loader2 size={50} strokeWidth={2.2} className='animate-spin text-blue-600 ' />
             <p className='text-gray-600 text-lg'>Loading Map</p>
           </div>
         )}
 
         {showPopUp && <IssueForm showPopUp={showPopUp} setShowPopUp={setShowPopUp} />}
-        <Footer />
+        <div className='shrink-0'>
+          <Footer />
+        </div>
     </div>
   )
 }
