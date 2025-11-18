@@ -61,7 +61,6 @@ const DashBoard = () => {
       const response = await axios.get(url);
 
       const {issues, pagination} = response.data;
-      console.log('My Issues: ', issues);
       const {totalPages} = pagination;
       setAllIssuesList(issues);
       setTotalPages(totalPages);

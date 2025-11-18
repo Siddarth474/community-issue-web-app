@@ -132,11 +132,11 @@ export default function MapViewClient({ onLocationSelect, issues = [] }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       />
 
-      {issues.map((i) => {
+      {issues.map((i, ind) => {
         const icon = categoryIcons[i.category] || categoryIcons["Other"];
         return (
           <Marker
-            key={i._id}
+            key={ind}
             position={[Number(i.location.latitude), Number(i.location.longitude)]}
             icon={icon}
             className='text-sm'

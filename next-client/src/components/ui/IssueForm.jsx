@@ -10,13 +10,12 @@ import { handleFailure, handleSuccess } from '@/lib/notification';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { IssueContext } from '@/context/IssueContext';
-import getAISuggestions from '@/lib/gemini';
 
 const IssueForm = ({ setShowPopUp }) => {
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
 
-    const {issueDetails, setIssueDetails, editId, setEditId, setAllIssuesList} = useContext(IssueContext);   
+    const {issueDetails, setIssueDetails, editId, setEditId, setAllIssuesList, allIssuesList} = useContext(IssueContext);   
 
     const handleLocation = (e) => {
         const {name, value} = e.target;
@@ -67,9 +66,10 @@ const IssueForm = ({ setShowPopUp }) => {
                 response = await axios.post('/api/uploads/issues', formData, {
                     headers: {'Content-Type': 'multipart/form-data'}
                 });
+                setAllIssuesList((prev) => [...prev, response.data.issue])
             }
 
-            const {message, success, issue} = response.data;
+            const {message, success} = response.data;
              
             if(success) {
                 handleSuccess(message);
@@ -93,13 +93,11 @@ const IssueForm = ({ setShowPopUp }) => {
 
         } catch (error) {
             setLoading(false);
-            if(error.response) {
-                console.log('Error in issue submit', error.response);
+            if(error.response) { 
                 const data = error.response.data;
                 handleFailure(data.error || 'Error in issue submit');
             }
             else {
-                console.log('Error in issue submit', error.message);
                 handleFailure("Network error something went wrong" || error.message);
             }            
         }
@@ -109,9 +107,9 @@ const IssueForm = ({ setShowPopUp }) => {
         try {
             setLoading(true);
             const response = await axios.post('/api/summarize', {topic});
-            console.log('AI RESPONSE: ', response.data);
             const {summary} = response.data;
             setIssueDetails({...issueDetails, description: summary});
+            
         } catch (error) {
            if(error.response) {
                 console.log("Failed to generate text:", error.message);

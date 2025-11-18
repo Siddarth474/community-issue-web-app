@@ -21,6 +21,10 @@ const io = new Server(server, {
     }
 });
 
+app.get('/', (req, res) => {
+    res.send('Render Socket Server is Running!');
+});
+
 app.post('/api/trigger-event', (req, res) => {
     const { event, data } = req.body;
 

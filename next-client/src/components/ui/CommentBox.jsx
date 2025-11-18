@@ -94,7 +94,7 @@ const CommentBox = ({ title, location, setShowComments, issueId, onCommentsChang
       duration: 0.4,
       scale: { type: "spring", visualDuration: 0.3, bounce: 0.4 }
     }}
-    className="w-[95%] sm:w-full max-w-md fixed top-[40%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-9990 bg-gray-100 dark:bg-zinc-900 
+    className="w-[95%] sm:w-full max-w-md fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-9990 bg-gray-100 dark:bg-zinc-900 
    text-black dark:text-white rounded-xl shadow-xl p-6 mx-auto">
       <header className="flex justify-between items-start mb-4">
         <div>

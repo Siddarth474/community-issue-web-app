@@ -9,7 +9,7 @@ const Footer = () => {
   const pathname = usePathname();
 
   return (
-    <div className='flex md:hidden fixed bottom-0 z-99 bg-white text-black dark:bg-zinc-900
+    <div className='flex md:hidden fixed bottom-0 z-990 bg-white text-black dark:bg-zinc-900
      dark:text-gray-100 p-3 w-full justify-evenly gap-10'>
         <button>
           <Link href='/map'
