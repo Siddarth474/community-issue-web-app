@@ -46,7 +46,7 @@ export const DELETE = async (req, {params}) => {
         const deletedIssue = await Issue.findByIdAndDelete(issueId);
 
         try {
-            await axios.post('http://localhost:3001/api/trigger-event', {
+            await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/trigger-event`, {
                 data: deletedIssue,
                 event: 'delete-issue'
             });
@@ -173,7 +173,7 @@ export const PATCH = async (req, {params}) => {
         );
 
         try {
-            await axios.post('http://localhost:3001/api/trigger-event', {
+            await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/trigger-event`, {
                 data: updatedIssue,
                 event: 'update-issue'
             });

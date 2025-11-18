@@ -270,7 +270,6 @@ const IssueForm = ({ setShowPopUp }) => {
                             name='description'
                             value={issueDetails.description}
                             type='text' 
-                            autoFocus
                             placeholder='Describe issue...' 
                             className='outline p-2 rounded-lg focus:ring-2 focus:outline-0 focus:ring-orange-500' />)}
                         </div>
@@ -298,7 +297,6 @@ const IssueForm = ({ setShowPopUp }) => {
                                 name='latitude'                               
                                 type='number' 
                                 step="any"
-                                autoFocus
                                 placeholder='Enter latitude...' 
                                 className='outline p-2 rounded-lg focus:ring-2 focus:outline-0 focus:ring-orange-500' />
                             </div>

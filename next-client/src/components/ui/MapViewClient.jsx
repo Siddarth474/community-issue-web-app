@@ -113,48 +113,44 @@ export default function MapViewClient({ onLocationSelect, issues = [] }) {
   }
 
   return (
-    <MapContainer
-      center={center}
-      maxBounds={bounds}
-      zoom={15}
-      minZoom={14}
-      maxZoom={18}
-      style={{
-        height: isMobile ? "500px" : "680px",
-        width: "100%",
-        borderRadius: "12px",
-        boxShadow:
-          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      />
+    <div className="w-full h-full">
+      <MapContainer
+      className="h-[90%] md:h-full w-full rounded-xl shadow-lg"
+        center={center}
+        maxBounds={bounds}
+        zoom={15}
+        minZoom={14}
+        maxZoom={18}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        />
 
-      {issues.map((i, ind) => {
-        const icon = categoryIcons[i.category] || categoryIcons["Other"];
-        return (
-          <Marker
-            key={ind}
-            position={[Number(i.location.latitude), Number(i.location.longitude)]}
-            icon={icon}
-            className='text-sm'
-          >
-            <Popup>
-              <strong className="capitalize">{i.title}</strong>
-              <br />
-              {i.category}
-              <br />
-              📍 {i.location.latitude.toFixed(4)}, {i.location.longitude.toFixed(4)}
-              <br />
-              Status: {i.Status}
-            </Popup>
-          </Marker>
-        );
-      })}
+        {issues.map((i, ind) => {
+          const icon = categoryIcons[i.category] || categoryIcons["Other"];
+          return (
+            <Marker
+              key={ind}
+              position={[Number(i.location.latitude), Number(i.location.longitude)]}
+              icon={icon}
+              className='text-sm'
+            >
+              <Popup>
+                <strong className="capitalize">{i.title}</strong>
+                <br />
+                {i.category}
+                <br />
+                📍 {i.location.latitude.toFixed(4)}, {i.location.longitude.toFixed(4)}
+                <br />
+                Status: {i.Status}
+              </Popup>
+            </Marker>
+          );
+        })}
 
-      <LocationMarker />
-    </MapContainer>
+        <LocationMarker />
+      </MapContainer>
+    </div>
   );
 }

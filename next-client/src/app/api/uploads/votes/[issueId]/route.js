@@ -38,7 +38,7 @@ export const POST = async (req, {params}) => {
                 );
 
                 try {
-                    await axios.post('http://localhost:3001/api/trigger-event', {
+                    await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/trigger-event`, {
                         event: 'vote-removed',
                         data: deletedVote
                     });
@@ -56,7 +56,7 @@ export const POST = async (req, {params}) => {
                 await existingVote.save();
 
                 try {
-                    await axios.post('http://localhost:3001/api/trigger-event', {
+                    await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/trigger-event`, {
                         event: 'vote-changed',
                         data: existingVote
                     });
@@ -83,7 +83,7 @@ export const POST = async (req, {params}) => {
         );
 
         try {
-            await axios.post('http://localhost:3001/api/trigger-event', {
+            await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/trigger-event`, {
                 event: 'vote-added',
                 data: addVote
             });

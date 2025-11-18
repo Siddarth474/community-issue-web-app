@@ -90,7 +90,7 @@ export const POST = async (req) => {
         });
 
         try {
-            await axios.post('http://localhost:3001/api/trigger-event', {
+            await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_URL}/api/trigger-event`, {
                 event: 'new-issue',
                 data: newIssue
             });

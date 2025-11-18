@@ -58,10 +58,10 @@ const page = () => {
   }, [socket]);
   
   return (
-    <div className='w-full relative min-h-screen bg-gray-200 dark:bg-zinc-950'>
+    <div className='w-full relative h-[calc(100vh-70px)] bg-gray-200 dark:bg-zinc-950'>
         <Header />
-        <div className="p-2 sm:px-5 sm:py-3 relative sm:my-3">
-          {!mapLoading && (<div className='relative'>
+        <div className="p-2 relative h-full w-full sm:px-5 sm:py-3 my-3">
+          {!mapLoading && (<div className='relative h-full w-full'>
             <MapView 
             onLocationSelect={(lat, lng) => {
               setIssueDetails(prev => ({
@@ -78,7 +78,7 @@ const page = () => {
             <button onClick={() => setShowPopUp(true)}
             className='absolute bg-transparent text-white bg-gradient-to-r from-orange-500 to-orange-700
             shadow-lg hover:from-orange-600 hover:to-orange-800 text-[26px] sm:text-3xl font-semibold py-3 px-6 rounded-full
-            bottom-15 left-1/2 -translate-x-1/2 z-[9990] cursor-pointer'>
+            bottom-[calc(6rem+env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-[9990] cursor-pointer'>
                Report 
             </button>
           </div>)}

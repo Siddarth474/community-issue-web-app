@@ -16,9 +16,11 @@ app.use(cors());
 
 const io = new Server(server, {
     cors: {
-        origin: process.env.DOMAIN,
-        methods: ['GET', 'POST']
-    }
+        origin: process.env.DOMAIN?.split(","),
+        methods: ['GET', 'POST'],
+        credentials: true,
+    },
+    transports: ['websocket'], 
 });
 
 app.get('/', (req, res) => {

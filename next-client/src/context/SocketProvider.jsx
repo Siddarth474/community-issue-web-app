@@ -13,7 +13,13 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const socketInstance = new ClientIO(process.env.NEXT_PUBLIC_SOCKET_URL);
+    const socketInstance = new ClientIO(process.env.NEXT_PUBLIC_SOCKET_URL, {
+      transports: ["websocket"],
+      reconnection: true,
+      reconnectionAttempts: 5,
+      path: "/socket.io",
+    });
+
 
     socketInstance.on('connect', () => {
       console.log('[SocketProvider] Connected to socket server');
