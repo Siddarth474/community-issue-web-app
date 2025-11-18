@@ -42,14 +42,14 @@ const Tabs = ({ activeTab, setActiveTab, setFilteredList, setCurrentPage}) => {
           <button
             onClick={() => { setActiveTab('all'); setCurrentPage(1) }}
             className={`relative z-10 py-2 px-4 transition-colors rounded-full cursor-pointer
-              ${activeTab === 'all' ? 'text-white bg-orange-600' : 'text-black dark:text-white'}`}>
+              ${activeTab === 'all' ? 'text-white bg-orange-500' : 'text-black dark:text-white'}`}>
             All Issues
           </button>
 
           <button
             onClick={() => { setActiveTab('mine'); setCurrentPage(1) }}
             className={`relative z-10 py-2 px-4 transition-colors rounded-full cursor-pointer
-              ${activeTab !== 'all' ? 'text-white bg-orange-600' : 'text-black dark:text-white'}`}>
+              ${activeTab !== 'all' ? 'text-white bg-orange-500' : 'text-black dark:text-white'}`}>
             My Issues
           </button>
         </div>

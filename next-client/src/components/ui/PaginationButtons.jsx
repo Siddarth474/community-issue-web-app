@@ -12,7 +12,7 @@ export function PaginationButtons({currentPage, setCurrentPage, totalPages}) {
   const pages = Array.from({length: totalPages}, (_, i) => i+1);
 
   return (
-    <Pagination className="my-8">
+    <Pagination className="py-8">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}  
