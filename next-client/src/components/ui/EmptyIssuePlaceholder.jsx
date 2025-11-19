@@ -7,7 +7,7 @@ const EmptyIssuesPlaceholder = () => {
     <div className="flex flex-col items-center justify-center text-center
       p-10 md:p-12 lg:p-16 shadow-lg bg-gray-50 dark:bg-zinc-900 dark:text-gray-100 
       rounded-xl text-gray-700
-      max-w-xl mx-auto mb-5
+      max-w-xl mx-auto 
     ">
       <div className="text-5xl md:text-6xl text-gray-400 mb-5">
         <BoxIcon size={68} strokeWidth={1.5} /> 

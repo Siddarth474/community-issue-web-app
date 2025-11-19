@@ -128,50 +128,54 @@ const DashBoard = () => {
   }, [socket]);
 
   return (
-    <div className='w-full flex flex-col relative h-[89vh] md:h-screen bg-gray-200 dark:bg-black dark:text-gray-700 overflow-auto'>
-        <div className='shrink-0'><Header /></div>
-        {showPopUp && <IssueForm setShowPopUp={setShowPopUp} />}
-        <div className='w-full h-full flex justify-center'>
-            <div className='w-full md:w-[90%] my-5 px-3 py-3'>
-              <Stats />
-              <Tabs 
-              activeTab ={activeTab}
-              setActiveTab={setActiveTab}
-              setCurrentPage={setCurrentPage}
-              setFilteredList={setFilteredList}
-              />
+    <div className='w-full flex flex-col min-h-screen bg-gray-200 dark:bg-black dark:text-gray-700'>
+      <Header />
 
-              {loading && (
-                <div className='w-full flex flex-col justify-center items-center gap-2'>
-                  <Loader2 strokeWidth={2.2} className='w-12 h-12 animate-spin text-blue-600' />
-                  <p className='text-gray-600 font-semibold'>Loading Issues</p>
-                </div>
-              )}
+      {showPopUp && <IssueForm setShowPopUp={setShowPopUp} />}
 
-              {!loading && (<div className='grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5 '>
-                {filteredList.map((issue, ind) => (
-                  <CardIssue
+      <div className='flex-1 w-full flex justify-center overflow-auto'>
+        <div className='w-full md:w-[90%] my-5 px-3 py-3'>
+          <Stats />
+          <Tabs 
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setCurrentPage={setCurrentPage}
+            setFilteredList={setFilteredList}
+          />
+
+          {loading && (
+            <div className='w-full flex flex-col justify-center items-center gap-2'>
+              <Loader2 strokeWidth={2.2} className='w-12 h-12 animate-spin text-blue-600' />
+              <p className='text-gray-600 font-semibold'>Loading Issues</p>
+            </div>
+          )}
+
+          {!loading && (
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5'>
+              {filteredList.map((issue, ind) => (
+                <CardIssue
                   key={ind} 
                   issue={issue} 
                   activeTab={activeTab}
                   setShowPopUp={setShowPopUp}
-                  
-                  />
-                ))}
-              </div>)}
-              {!loading && !filteredList.length && <EmptyIssuesPlaceholder />}
-              
-              {!loading && filteredList.length > 0 && <PaginationButtons 
-                currentPage={currentPage} 
-                setCurrentPage={setCurrentPage}
-                totalPages={totalPage} 
-              />}
-              
+                />
+              ))}
             </div>
+          )}
+
+          {!loading && !filteredList.length && <EmptyIssuesPlaceholder />}
+
+          {!loading && filteredList.length > 0 && (
+            <PaginationButtons 
+              currentPage={currentPage} 
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPage} 
+            />
+          )}
         </div>
-        <div className='shrink-0'>
-          <Footer />
-        </div>
+      </div>
+
+      <div className='shrink-0'><Footer /></div>
     </div>
   )
 }

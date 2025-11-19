@@ -44,7 +44,7 @@ const Stats = () => {
         <div className='flex flex-col md:flex-row items-center justify-between gap-2 bg-white 
         rounded-xl shadow-lg dark:bg-zinc-900 dark:text-white p-3 md:p-4'>
             <Clock strokeWidth={1.5} className='text-yellow-500 w-11 h-11 md:w-15 md:h-15 bg-yellow-100 rounded-xl p-2' />
-            <p className='flex flex-col items-center flex-wrap justify-center text-xs md:text-[16px] whitespace-normal'>In-progress Issues
+            <p className='flex flex-col items-center flex-wrap justify-center text-xs md:text-[16px]'>In-progress Issues
                 <span className='text-lg md:text-2xl font-bold'>{numberOf.inProgressIssues}</span>
             </p>
         </div>

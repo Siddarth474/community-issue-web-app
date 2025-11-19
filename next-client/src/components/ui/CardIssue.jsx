@@ -170,6 +170,9 @@ const CardIssue = ({ issue, activeTab, setShowPopUp }) => {
     calculateVotes();
   }, [issue?.votes]);
 
+  useEffect(() => {
+    setCommentsCount(issue.comments.length ?? 0);
+  }, [issue?.comments?.length, issue._id]);
       
   return (
    <div>
