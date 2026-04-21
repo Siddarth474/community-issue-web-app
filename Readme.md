@@ -130,7 +130,7 @@ Users can:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/community-issue-tracker.git
+git clone https://github.com/Siddarth474/community-issue-web-app.git
 cd community_issue_tracker
 ```
 
